@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 
-import LaunchList from './LaunchList';
+import LaunchList from './Components/LaunchList';
 
 function App() {
   return (

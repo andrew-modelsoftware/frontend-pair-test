@@ -1,4 +1,5 @@
 import React from "react";
+import { formatDateTime } from "./helpers";
 
 type Props = {
     entry: any
@@ -13,13 +14,14 @@ const LaunchListEntry: React.FC<Props> = ({entry}) => {
 
     const payload = entry?.rocket?.second_stage?.payloads[0]?.payload_type;
     const missionPatch = entry?.links?.mission_patch_small;
-
+    const localDate = formatDateTime(entry.launch_date_utc)
+    
     return (<>
         <div className="App-list-entry-title" data-testid="entryContainer">
             <h4 className="App-title-clickable" onClick={onEntryClicked}>
                 {entry.mission_name}
             </h4>
-            <h5>{entry.launch_date_utc}</h5>
+            <h5>{localDate}</h5>
         </div>
         {isDetailVisible && <div className="App-list-entry-body" data-testid="entryBody">
             {missionPatch && <img width="10%" src={missionPatch} alt={`${entry.mission_name} Mission Patch`}/>}
